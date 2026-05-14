@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import users from '@/assets/usuarios.json'
+import users from '@/assets/users.json'
 
 export default {
   data() {
