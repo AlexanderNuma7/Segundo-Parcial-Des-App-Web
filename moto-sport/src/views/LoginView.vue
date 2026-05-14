@@ -1,59 +1,53 @@
 <template>
-  <div class="container mt-5">
-    <div class="card p-4">
-      <h2 class="text-center mb-3">Login</h2>
+  <div class="container mt-5 col-md-4">
+    <h3>Iniciar Sesión</h3>
 
-      <div v-if="error" class="alert alert-danger">
-        Usuario o contraseña incorrectos
-      </div>
+    <input
+      v-model="usuario"
+      class="form-control mb-2"
+      placeholder="Usuario"
+    />
 
-      <form @submit.prevent="login">
-        <input
-          v-model="username"
-          type="text"
-          placeholder="Usuario"
-          class="form-control mb-2"
-        />
+    <input
+      v-model="clave"
+      type="password"
+      class="form-control mb-2"
+      placeholder="Contraseña"
+    />
 
-        <input
-          v-model="password"
-          type="password"
-          placeholder="Contraseña"
-          class="form-control mb-3"
-        />
+    <button class="btn btn-primary w-100" @click="login">
+      Entrar
+    </button>
 
-        <button class="btn btn-primary w-100">Ingresar</button>
-      </form>
-    </div>
+    <p v-if="error" class="text-danger mt-2">
+      {{ error }}
+    </p>
   </div>
 </template>
-
 <script>
-import users from "../data/users.json";
+import users from '@/assets/usuarios.json'
 
 export default {
   data() {
     return {
-      username: "",
-      password: "",
-      error: false,
-    };
+      usuario: '',
+      clave: '',
+      error: ''
+    }
   },
   methods: {
     login() {
-      const user = users.find(
-        (u) =>
-          u.username === this.username &&
-          u.password === this.password
-      );
+      const valido = users.find(
+        u => u.userName === this.usuario && u.password === this.clave
+      )
 
-      if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
-        this.$router.push("/dashboard");
+      if (valido) {
+        localStorage.setItem('logueado', 'true')
+        this.$router.push('/dashboard')
       } else {
-        this.error = true;
+        this.error = 'Credenciales incorrectas'
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
