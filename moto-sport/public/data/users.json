@@ -1,17 +1,16 @@
 [
   {
-    "username": "numa",
+    "userName": "numa",
     "password": "0192644",
     "role": "admin"
   },
-{
-    "username": "emmanuel",
+  {
+    "userName": "emmanuel",
     "password": "0192512",
     "role": "admin"
-},
-{
-
-    "username": "Jerson",
+  },
+  {
+    "userName": "Jerson",
     "password": "012345",
     "role": "user"
   }

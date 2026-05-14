@@ -25,19 +25,26 @@
   </div>
 </template>
 <script>
-import users from '@/assets/users.json'
-
 export default {
   data() {
     return {
       usuario: '',
       clave: '',
-      error: ''
+      error: '',
+      users: []
+    }
+  },
+  async created() {
+    try {
+      const response = await fetch('/data/users.json')
+      this.users = await response.json()
+    } catch (error) {
+      console.error('Error cargando usuarios:', error)
     }
   },
   methods: {
     login() {
-      const valido = users.find(
+      const valido = this.users.find(
         u => u.userName === this.usuario && u.password === this.clave
       )
 

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombre": "Moto Sport 1",
+    "precio": 5000,
+    "cilindraje": 250,
+    "imagen": "https://via.placeholder.com/150?text=Moto+250cc"
+  },
+  {
+    "id": 2,
+    "nombre": "Moto Sport 2",
+    "precio": 7500,
+    "cilindraje": 500,
+    "imagen": "https://via.placeholder.com/150?text=Moto+500cc"
+  },
+  {
+    "id": 3,
+    "nombre": "Moto Sport 3",
+    "precio": 6000,
+    "cilindraje": 400,
+    "imagen": "https://via.placeholder.com/150?text=Moto+400cc"
+  }
+]

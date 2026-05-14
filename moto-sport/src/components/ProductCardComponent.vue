@@ -1,20 +1,32 @@
 <template>
   <div class="container mt-4">
     <h3>Gestión de Productos</h3>
-    <div class="mb-3">
+    <div class="mb-3 p-3 border rounded bg-light">
       <input v-model="nuevo.nombre" class="form-control mb-2" placeholder="Nombre" />
       <input v-model="nuevo.precio" class="form-control mb-2" placeholder="Precio" type="number" />
-      <button class="btn btn-success" @click="agregar">Agregar</button>
+      <input v-model="nuevo.cilindraje" class="form-control mb-2" placeholder="Cilindraje (cc)" type="number" />
+      <input v-model="nuevo.imagen" class="form-control mb-2" placeholder="URL de Imagen" type="text" />
+      <button class="btn btn-success" @click="agregar">Agregar Moto</button>
     </div>
 
-    <table class="table table-striped">
-      <thead>
-        <tr><th>Nombre</th><th>Precio</th><th>Acciones</th></tr>
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cilindraje</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
       </thead>
       <tbody>
         <tr v-for="(p, i) in productos" :key="i">
           <td>{{ p.nombre }}</td>
-          <td>{{ p.precio }}</td>
+          <td>$ {{ p.precio }}</td>
+          <td>{{ p.cilindraje }} cc</td>
+          <td>
+            <img :src="p.imagen" :alt="p.nombre" style="max-width: 80px; height: 60px; object-fit: cover;" />
+          </td>
           <td><button @click="eliminar(i)" class="btn btn-danger btn-sm">Eliminar</button></td>
         </tr>
       </tbody>
@@ -25,7 +37,10 @@
 <script>
 export default {
   data() {
-    return { productos: [], nuevo: { nombre: '', precio: '' } }
+    return { 
+      productos: [], 
+      nuevo: { nombre: '', precio: '', cilindraje: '', imagen: '' } 
+    }
   },
   created() {
     const data = localStorage.getItem('productos')
@@ -33,10 +48,12 @@ export default {
   },
   methods: {
     agregar() {
-      if (this.nuevo.nombre && this.nuevo.precio) {
+      if (this.nuevo.nombre && this.nuevo.precio && this.nuevo.cilindraje && this.nuevo.imagen) {
         this.productos.push({ ...this.nuevo })
         localStorage.setItem('productos', JSON.stringify(this.productos))
-        this.nuevo = { nombre: '', precio: '' }
+        this.nuevo = { nombre: '', precio: '', cilindraje: '', imagen: '' }
+      } else {
+        alert('Por favor completa todos los campos')
       }
     },
     eliminar(index) {
