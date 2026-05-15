@@ -1,23 +1,98 @@
 [
   {
     "id": 1,
-    "nombre": "Moto Sport 1",
-    "precio": 5000,
-    "cilindraje": 250,
-    "imagen": "https://via.placeholder.com/150?text=Moto+250cc"
+    "name": "KTM 1290 Super Duke",
+    "brand": "KTM",
+    "price": 95000000,
+    "cc": 1290,
+    "image": "https://www.ktm.com/ktmgroup-storage/1290-super-duke-r.png"
   },
   {
     "id": 2,
-    "nombre": "Moto Sport 2",
-    "precio": 7500,
-    "cilindraje": 500,
-    "imagen": "https://via.placeholder.com/150?text=Moto+500cc"
+    "name": "Yamaha MT-09",
+    "brand": "Yamaha",
+    "price": 45000000,
+    "cc": 900,
+    "image": "https://www.yamaha-motor.eu/mt09.png"
   },
   {
     "id": 3,
-    "nombre": "Moto Sport 3",
-    "precio": 6000,
-    "cilindraje": 400,
-    "imagen": "https://via.placeholder.com/150?text=Moto+400cc"
+    "name": "Ducati Streetfighter V4",
+    "brand": "Ducati",
+    "price": 140000000,
+    "cc": 1100,
+    "image": "https://www.ducati.com/streetfighter-v4.png"
+  },
+  {
+    "id": 4,
+    "name": "Ducati Panigale V4",
+    "brand": "Ducati",
+    "price": 150000000,
+    "cc": 1100,
+    "image": "https://www.ducati.com/panigale-v4.png"
+  },
+  {
+    "id": 5,
+    "name": "Kawasaki Z1000",
+    "brand": "Kawasaki",
+    "price": 60000000,
+    "cc": 1000,
+    "image": "https://www.kawasaki.com/z1000.png"
+  },
+  {
+    "id": 6,
+    "name": "BMW M1000RR",
+    "brand": "BMW",
+    "price": 120000000,
+    "cc": 1000,
+    "image": "https://www.bmw-motorrad.com/m1000rr.png"
+  },
+  {
+    "id": 7,
+    "name": "BMW S1000RR",
+    "brand": "BMW",
+    "price": 95000000,
+    "cc": 1000,
+    "image": "https://www.bmw-motorrad.com/s1000rr.png"
+  },
+  {
+    "id": 8,
+    "name": "Kawasaki H2R",
+    "brand": "Kawasaki",
+    "price": 200000000,
+    "cc": 1000,
+    "image": "https://www.kawasaki.com/h2r.png"
+  },
+  {
+    "id": 9,
+    "name": "Suzuki GSX-R1000",
+    "brand": "Suzuki",
+    "price": 70000000,
+    "cc": 1000,
+    "image": "https://www.globalsuzuki.com/gsxr1000.png"
+  },
+  {
+    "id": 10,
+    "name": "Suzuki Hayabusa 1340",
+    "brand": "Suzuki",
+    "price": 85000000,
+    "cc": 1340,
+    "image": "https://www.globalsuzuki.com/hayabusa.png"
+  },
+  {
+    "id": 11,
+    "name": "Yamaha R7",
+    "brand": "Yamaha",
+    "price": 40000000,
+    "cc": 700,
+    "image": "https://www.yamaha-motor.eu/r7.png"
+  },
+  {
+    "id": 12,
+    "name": "Ducati Hypermotard V2 SP",
+    "brand": "Ducati",
+    "price": 110000000,
+    "cc": 937,
+    "image": "https://www.ducati.com/hypermotard-v2.png"
   }
 ]
