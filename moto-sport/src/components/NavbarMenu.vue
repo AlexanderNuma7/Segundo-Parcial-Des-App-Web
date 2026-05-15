@@ -42,6 +42,8 @@ export default {
   methods: {
     logout() {
       localStorage.removeItem("logueado")
+      localStorage.removeItem("role")
+      localStorage.removeItem("userName")
       this.$router.push("/")
     }
   }

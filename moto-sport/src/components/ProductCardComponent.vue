@@ -3,7 +3,7 @@
     <h3 class="mb-4">🏍️ Concesionario de Motos</h3>
 
     <!-- FORMULARIO -->
-    <div class="card p-4 mb-4 shadow">
+    <div class="card p-4 mb-4 shadow" v-if="isAdmin">
       <h5>{{ editando ? "Editar Moto" : "Agregar Moto" }}</h5>
 
       <input v-model="nuevo.name" class="form-control mb-2" placeholder="Nombre" />
@@ -40,17 +40,54 @@
           <p><strong>CC:</strong> {{ p.cc }}</p>
           <p class="text-danger fw-bold fs-5">${{ p.price }}</p>
 
-          <button @click="editar(p, i)" class="btn btn-primary btn-sm me-2">
+          <button v-if="isAdmin" @click="editar(p, i)" class="btn btn-primary btn-sm me-2">
             ✏️ Editar
           </button>
 
-          <button @click="eliminar(i)" class="btn btn-danger btn-sm">
+          <button v-if="isAdmin" @click="eliminar(i)" class="btn btn-danger btn-sm me-2">
             🗑️ Eliminar
+          </button>
+
+          <button @click="comprar(p)" class="btn btn-success btn-sm">
+            🛒 Comprar
           </button>
         </div>
 
       </div>
 
+    </div>
+
+    <div v-if="checkoutModalVisible" class="modal-backdrop" @click.self="cerrarCheckout">
+      <div class="modal-card shadow-lg">
+        <div class="modal-header d-flex justify-content-between align-items-center">
+          <div>
+            <h5 class="modal-title mb-0">Datos de compra</h5>
+            <small class="text-muted">Ingresa tu correo, teléfono y método de pago</small>
+          </div>
+          <button type="button" class="btn-close" aria-label="Cerrar" @click="cerrarCheckout"></button>
+        </div>
+        <div class="modal-body">
+          <div v-if="checkoutProduct" class="mb-3">
+            <p class="mb-1"><strong>Producto:</strong> {{ checkoutProduct.name }}</p>
+            <p class="mb-0"><strong>Precio:</strong> ${{ checkoutProduct.price }}</p>
+          </div>
+          <input v-model="checkoutData.email" type="email" class="form-control mb-2" placeholder="Correo electrónico" />
+          <input v-model="checkoutData.phone" type="tel" class="form-control mb-2" placeholder="Teléfono" />
+          <select v-model="checkoutData.paymentMethod" class="form-select mb-2">
+            <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+            <option value="Transferencia bancaria">Transferencia bancaria</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <div v-if="checkoutError" class="alert alert-danger p-2">
+            {{ checkoutError }}
+          </div>
+        </div>
+        <div class="modal-footer text-end">
+          <button class="btn btn-secondary me-2" @click="cerrarCheckout">Cancelar</button>
+          <button class="btn btn-success" @click="confirmarCompra">Confirmar compra</button>
+        </div>
+      </div>
     </div>
 
     <div v-if="modalVisible" class="modal-backdrop" @click.self="cerrarModal">
@@ -84,7 +121,23 @@ export default {
       editando: false,
       indiceEdicion: null,
       modalVisible: false,
-      modalMessage: ''
+      modalMessage: '',
+      checkoutModalVisible: false,
+      checkoutProduct: null,
+      checkoutData: {
+        email: '',
+        phone: '',
+        paymentMethod: 'Tarjeta de crédito'
+      },
+      checkoutError: ''
+    }
+  },
+  computed: {
+    role() {
+      return localStorage.getItem('role') || 'user'
+    },
+    isAdmin() {
+      return this.role === 'admin'
     }
   },
   created() {
@@ -164,6 +217,49 @@ export default {
         this.productos.splice(index, 1)
         localStorage.setItem('productos', JSON.stringify(this.productos))
       }
+    },
+    comprar(producto) {
+      this.checkoutProduct = { ...producto }
+      this.checkoutData = {
+        email: '',
+        phone: '',
+        paymentMethod: 'Tarjeta de crédito'
+      }
+      this.checkoutError = ''
+      this.checkoutModalVisible = true
+    },
+    confirmarCompra() {
+      if (!this.checkoutData.email || !this.checkoutData.phone || !this.checkoutData.paymentMethod) {
+        this.checkoutError = 'Por favor completa todos los campos antes de confirmar.'
+        return
+      }
+
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]')
+      const comprador = localStorage.getItem('userName') || 'Cliente'
+      orders.push({
+        id: Date.now(),
+        buyer: comprador,
+        product: { ...this.checkoutProduct },
+        email: this.checkoutData.email,
+        phone: this.checkoutData.phone,
+        paymentMethod: this.checkoutData.paymentMethod,
+        status: 'En proceso de pago',
+        date: new Date().toLocaleString()
+      })
+      localStorage.setItem('orders', JSON.stringify(orders))
+      this.checkoutModalVisible = false
+      this.modalMessage = `Compra de ${this.checkoutProduct.name} registrada en proceso de pago.`
+      this.modalVisible = true
+    },
+    cerrarCheckout() {
+      this.checkoutModalVisible = false
+      this.checkoutProduct = null
+      this.checkoutData = {
+        email: '',
+        phone: '',
+        paymentMethod: 'Tarjeta de crédito'
+      }
+      this.checkoutError = ''
     }
   }
 }

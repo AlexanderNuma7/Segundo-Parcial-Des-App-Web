@@ -50,6 +50,8 @@ export default {
 
       if (valido) {
         localStorage.setItem('logueado', 'true')
+        localStorage.setItem('role', valido.role)
+        localStorage.setItem('userName', valido.userName)
         this.$router.push('/dashboard')
       } else {
         this.error = 'Credenciales incorrectas'

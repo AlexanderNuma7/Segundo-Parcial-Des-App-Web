@@ -3,7 +3,7 @@
     <h3 class="mb-4">Catálogo de Motos 🏍️</h3>
 
     <!-- FORMULARIO -->
-    <div class="card p-3 mb-4 shadow">
+    <div class="card p-3 mb-4 shadow" v-if="isAdmin">
       <h5>{{ editando ? "Editar Moto" : "Agregar Moto" }}</h5>
 
       <input v-model="producto.name" class="form-control mb-2" placeholder="Nombre" />
@@ -15,6 +15,10 @@
       <button @click="guardar" class="btn btn-success">
         {{ editando ? "Actualizar" : "Agregar" }}
       </button>
+    </div>
+
+    <div v-else class="alert alert-info">
+      Estás conectado como usuario normal. No puedes agregar, editar ni eliminar motos.
     </div>
 
     <!-- CARDS -->
@@ -31,11 +35,11 @@
           <p><strong>CC:</strong> {{ p.cc }}</p>
           <p class="text-danger fw-bold">${{ p.price }}</p>
 
-          <button @click="editar(p)" class="btn btn-primary btn-sm me-2">
+          <button v-if="isAdmin" @click="editar(p)" class="btn btn-primary btn-sm me-2">
             ✏️
           </button>
 
-          <button @click="eliminar(p.id)" class="btn btn-danger btn-sm me-2">
+          <button v-if="isAdmin" @click="eliminar(p.id)" class="btn btn-danger btn-sm me-2">
             🗑️
           </button>
 
@@ -95,6 +99,14 @@ export default {
         cc: "",
         image: ""
       }
+    }
+  },
+  computed: {
+    role() {
+      return localStorage.getItem('role') || 'user'
+    },
+    isAdmin() {
+      return this.role === 'admin'
     }
   },
 
