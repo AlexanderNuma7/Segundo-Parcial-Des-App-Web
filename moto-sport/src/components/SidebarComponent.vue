@@ -3,11 +3,6 @@
     <h5 class="mb-3">Panel lateral</h5>
     <ul class="nav flex-column mb-3">
       <li class="nav-item mb-2">
-        <router-link to="/dashboard" class="nav-link text-dark" exact-active-class="active">
-          🏠 Inicio
-        </router-link>
-      </li>
-      <li class="nav-item mb-2">
         <router-link to="/dashboard/productos" class="nav-link text-dark" active-class="active">
           🏍️ Motos
         </router-link>
@@ -19,7 +14,7 @@
       </li>
     </ul>
 
-    <div class="mb-2 text-uppercase text-secondary small">Información</div>
+    <div class="mb-2 text-uppercase text-muted small">Información</div>
     <ul class="nav flex-column mb-3">
       <li class="nav-item mb-2">
         <router-link to="/dashboard/contacto" class="nav-link text-dark" active-class="active">

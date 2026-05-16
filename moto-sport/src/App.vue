@@ -12,7 +12,8 @@
   --bg-main: #0f0f0f;
   --bg-section: #1c1c1c;
   --text-main: #ffffff;
-  --text-secondary: #cfcfcf;
+  --text-secondary: #b8b8b8;
+  --text-tertiary: #808080;
   --accent-red: #e10600;
   --accent-red-bright: #ff3b3b;
   --accent-red-hover: #ff2a2a;
@@ -126,21 +127,21 @@ h1, h2, h3, h4, h5, h6,
 .form-text,
 small,
 .modal-body p,
-.card .text-muted {
+.card .text-muted,
+.lead {
   color: var(--text-secondary) !important;
 }
 
-.text-danger,
+.text-danger {
+  color: var(--accent-red-bright) !important;
+}
+
 .btn-danger,
 .btn-danger:hover,
 .btn-danger:focus {
   color: #fff !important;
   background-color: #dc3545 !important;
   border-color: #dc3545 !important;
-}
-
-.text-danger {
-  color: var(--accent-red-bright) !important;
 }
 
 .btn-success {

@@ -10,7 +10,7 @@
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <div class="p-3 border rounded bg-white h-100">
+            <div class="p-3 border rounded h-100" style="background-color: #1c1c1c;">
               <h5>Correo</h5>
               <p>soporte@motostore.com</p>
               <h5>Teléfono</h5>
@@ -19,7 +19,7 @@
           </div>
 
           <div class="col-md-6 mb-3">
-            <div class="p-3 border rounded bg-white h-100">
+            <div class="p-3 border rounded h-100" style="background-color: #1c1c1c;">
               <h5>Dirección</h5>
               <p>Transversal 50 calle 68-37-ocaña, Colombia</p>
               <h5>Horario</h5>
