@@ -49,3 +49,24 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.navbar {
+  background-color: #0f0f0f !important;
+}
+
+.navbar-brand,
+.nav-link {
+  color: #ffffff !important;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #e10600 !important;
+}
+
+.nav-link.active {
+  color: #e10600 !important;
+  font-weight: 600;
+}
+</style>

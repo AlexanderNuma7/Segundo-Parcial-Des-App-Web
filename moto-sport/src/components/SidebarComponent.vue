@@ -59,6 +59,6 @@ export default {
 <style scoped>
 .nav-link.active {
   font-weight: 600;
-  color: #dc3545 !important;
+  color: #e10600 !important;
 }
 </style>

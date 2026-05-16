@@ -22,22 +22,12 @@
             </router-link>
           </div>
 
-          <!-- INFO -->
-          <div class="row text-center mb-4">
-            <div class="col-md-4">
-              <h4>🏍️ Inventario</h4>
-              <p>Gestiona todas las motos disponibles.</p>
-            </div>
-
-            <div class="col-md-4">
-              <h4>💰 Ventas</h4>
-              <p>Controla precios y productos fácilmente.</p>
-            </div>
-
-            <div class="col-md-4">
-              <h4>⚙️ Administración</h4>
-              <p>Panel simple y eficiente para tu negocio.</p>
-            </div>
+          <div class="p-4 mb-4 bg-secondary text-white rounded">
+            <h2>Sobre MotoStore</h2>
+            <p>
+              Somos una concesionaria dedicada a ofrecer las mejores motos con un servicio ágil y confiable.
+              Con nosotros encontrarás modelos exclusivos, atención personalizada y un equipo comprometido con tu satisfacción.
+            </p>
           </div>
 
           <!-- VISTAS HIJAS -->
